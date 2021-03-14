@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Livreto</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <!-- Barra de Navegação Superior -->
+      <nav
+        class="navbar navbar-expand-lg fixed-top navbar-light bg-light-purple"
+      >
+        <div class="container-xl">
+          <!-- Logo da Marca -->
+          <a class="navbar-brand" href="#">
+            <img
+              src="images/livreto_logo.png"
+              alt="Livreto"
+              width="170"
+              height="46"
+              class="d-inline-block align-top"
+            />
+          </a>
+          <!-- Botão de Menu Responsivo -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarToggler"
+            aria-controls="navbarToggler"
+            aria-expanded="false"
+            aria-label="Abrir menu"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            class="collapse navbar-collapse mt-2 container justify-content-center"
+            id="navbarToggler"
+          >
+            <!-- Caixa de texto para buscar livros -->
+            <form class="d-flex mb-2">
+              <input
+                id="searchInput"
+                class="form-control me-2"
+                style="width: 500px"
+                type="text"
+                placeholder="O que você procura?"
+              />
+
+              <button type="submit" class="d-inline-block bt-search">
+                <img
+                  src="images/search_icon.png"
+                  alt="Buscar"
+                  width="26"
+                  height="26"
+                  class="d-inline-block"
+                />
+              </button>
+            </form>
+          </div>
+          <div
+            class="collapse navbar-collapse mt-2 container justify-content-end"
+            id="navbarToggler"
+            style="width: 250px"
+          >
+            <!-- Painél do Usuário -->
+            <div class="user-panel d-flex flex-nowrap">
+              <img
+                src="images/user_icon.png"
+                alt="Minha conta"
+                width="36"
+                height="36"
+                class="d-inline-block align-top"
+              />
+
+              <p class="d-inline-block ms-1 mb-1 text-break align-center">
+                olá,
+                <span
+                  ><a class="anchor" href="#">entre</a> ou
+                  <a class="anchor d-inline-block" href="#"
+                    >cadastre-se</a
+                  ></span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Segunda barra de navegação -->
+      <nav
+        class="navbar navbar-expand navbar-dark bg-silver mb-4"
+        style="margin-top: 70px"
+      >
+        <div class="container-xl">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="dropdownCategoria"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="images/menu_icon.png"
+                  alt="Livreto"
+                  width="40"
+                  height="40"
+                  class="d-inline-block align-top"
+                />
+                <p class="text-wrap text-break d-inline-block">CATEGORIAS</p></a
+              >
+              <ul class="dropdown-menu" aria-labelledby="dropdownCategoria">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <a class="navbar-brand" href="#">
+            <img
+              src="images/bookmark_icon.png"
+              alt="Livros Salvos"
+              width="40"
+              height="40"
+              class="d-inline-block align-top"
+            />
+          </a>
+
+          <a class="navbar-brand" href="#">
+            <img
+              src="images/shopping_bag.png"
+              alt="Sacola de Compras"
+              width="40"
+              height="40"
+              class="d-inline-block align-top"
+            />
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Grid com todos os livros -->
+
+      <div class="container-xl d-flex">
+        <div class="card me-2" style="width: 16rem">
+          <img src="..." class="card-img-top" alt="imagem do livro" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+        <div class="card me-2" style="width: 16rem">
+          <img src="..." class="card-img-top" alt="imagem do livro" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

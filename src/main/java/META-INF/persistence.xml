@@ -10,5 +10,6 @@
 		<class>br.edu.ifpb.bookmark.modelo.Pedido</class>
 		<class>br.edu.ifpb.bookmark.modelo.Dimensoes</class>
 		<class>br.edu.ifpb.bookmark.modelo.ItemDeCompra</class>
+		<class>br.edu.ifpb.bookmark.modelo.Categoria</class>
 	</persistence-unit>
 </persistence>

@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+  justify-content: space-around;
+  font-size: 18px;
+}
+
+.bg-purple {
+  background-color: #57446e;
+}
+
+.bg-light-purple {
+  background-color: #8d6c9f;
+}
+
+.bg-silver {
+  background-color: #e7e6df;
+}
+
+.bg-dark-gray {
+  background-color: #606060;
+}
+
+.brand-title {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.tf-search {
+  border-radius: 4px;
+  border: 1px solid #fff;
+  width: 25rem;
+  height: 2.5rem;
+}
+
+.bt-search {
+  background-color: transparent;
+  border: 1px solid #8d6c9f;
+}
+
+.user-panel {
+  color: white;
+  /*border: 2px solid white;*/
+  align-items: center;
+}
+
+.anchor {
+  text-decoration: none;
+  color: #57446e;
+  font-weight: bold;
+}
+
+.anchor:hover {
+  text-decoration: underline;
+  color: #57446e;
+}
+
+.second-navbar {
+  color: #57446e;
+}
+
+#dropdownCategoria {
+  color: #57446e;
+  font-weight: bold;
+  align-items: center;
+}
