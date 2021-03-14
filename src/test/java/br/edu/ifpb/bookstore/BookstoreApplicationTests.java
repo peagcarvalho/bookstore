@@ -1,10 +1,10 @@
-package br.edu.ifpb.bookmark;
+package br.edu.ifpb.bookstore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BookmarkApplicationTests {
+class BookstoreApplicationTests {
 
 	@Test
 	void contextLoads() {
