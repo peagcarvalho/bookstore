@@ -4,8 +4,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import br.edu.ifpb.bookstore.dto.RequisicaoNovaCategoria;
 import br.edu.ifpb.bookstore.modelo.Categoria;
 import br.edu.ifpb.bookstore.repositorio.CategoriaRepository;
 
@@ -22,6 +20,14 @@ public class CategoriaServiceImpl implements CategoriaService {
         return response;
     }
 
+    @Transactional
+    public List<Categoria> listarCategoriasOrdemAlfabetica() {
+        List<Categoria> response = repository.findAllByOrderByNome();
+
+        return response;
+    }
+
+    @Transactional
     public void salvarCategoria(Categoria categoria) {
         repository.save(categoria);
     }

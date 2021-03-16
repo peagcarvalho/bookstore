@@ -1,129 +1,205 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Cadastro do Livro</title>
-
-    <link rel="stylesheet" href="css/dashboard.css" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-  </head>
+  <head th:replace="~{baseAdmin :: titulo('Cadastro de livro')}"> </head>
 
   <body>
-    <header id="navbar">
-      <div
-        class="navbar navbar-dark sticky-top bg-dark bg-light-purple flex-md-nowrap p-0 shadow"
-      >
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
-          <img
-            src="images/livreto_logo.png"
-            alt="Livreto"
-            width="136"
-            height="36"
-            class="d-inline-block align-top"
-        /></a>
-        <button
-          class="navbar-toggler position-absolute d-md-none collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#sidebarMenu"
-          aria-controls="sidebarMenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <input
-          class="form-control form-control-dark w-100"
-          type="text"
-          placeholder="Buscar"
-          aria-label="Search"
-        />
-        <ul class="navbar-nav px-3">
-          <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sair</a>
-          </li>
-        </ul>
-      </div>
+    <header th:replace="~{baseAdmin :: header}"></header>
 
-      <div class="container-fluid">
-        <div class="row">
-          <nav
-            id="sidebarMenu"
-            class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
-          >
-            <div class="position-sticky pt-3">
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">
-                    <span data-feather="home"></span>
-                    Dashboard
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="file"></span>
-                    Livros
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="shopping-cart"></span>
-                    Autores
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="users"></span>
-                    Editoras
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="bar-chart-2"></span>
-                    Categorias
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="layers"></span>
-                    Vendas
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="layers"></span>
-                    Funcionários
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ms-3 me-3"
+      >
+        <div class="ms-3 me-3">
+          <h5>Cadastrar novo livro</h5>
         </div>
       </div>
-    </header>
+      <form
+        class="row g-3 ms-3 me-3"
+        th:object="${requisicaoNovoLivro}"
+        action="/cadastroLivro"
+        method="POST"
+      >
+        <div class="col-md-12">
+          <label for="titulo" class="form-label">Título</label>
+          <input
+            th:field="*{titulo}"
+            th:errorclass="is-invalid"
+            type="text"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{titulo}"></div>
+        </div>
+        <div class="col-md-6">
+          <label for="isbn10" class="form-label">ISBN 10</label>
+          <input
+            th:field="*{isbn10}"
+            th:errorclass="is-invalid"
+            type="text"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{isbn10}"></div>
+        </div>
+        <div class="col-md-6">
+          <label for="isbn13" class="form-label">ISBN 13</label>
+          <input
+            th:field="*{isbn13}"
+            th:errorclass="is-invalid"
+            type="text"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{isbn13}"></div>
+        </div>
+        <div class="col-md-12">
+          <label for="sinopse" class="form-label">Sinopse</label>
+          <textarea
+            th:field="*{sinopse}"
+            th:errorclass="is-invalid"
+            class="form-control"
+            style="height: 120px"
+          ></textarea>
+          <div class="invalid-feedback" th:errors="*{sinopse}"></div>
+        </div>
+        <div class="col-2">
+          <label for="paginas" class="form-label">Páginas</label>
+          <input
+            th:field="*{paginas}"
+            th:errorclass="is-invalid"
+            type="number"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{paginas}"></div>
+        </div>
+        <div class="col-6">
+          <label for="idioma" class="form-label">Idioma</label>
+          <input
+            th:field="*{idioma}"
+            th:errorclass="is-invalid"
+            type="text"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{idioma}"></div>
+        </div>
+        <div class="col-md-4">
+          <label for="categoriaId" class="form-label">Categoria</label>
+          <select th:field="*{categoriaId}" class="form-select">
+            <option
+              th:each="categoria : ${categorias}"
+              th:value="${categoria.id}"
+            >
+              <span th:text="${categoria.nome}"></span>
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="editoraId" class="form-label">Editora</label>
+          <select th:field="*{editoraId}" class="form-select">
+            <option th:each="editora : ${editoras}" th:value="${editora.id}">
+              <span th:text="${editora.nome}"></span>
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="autorId" class="form-label">Autor</label>
+          <select th:field="*{autorId}" class="form-select">
+            <option th:each="autor : ${autores}" th:value="${autor.id}">
+              <span th:text="${autor.nome}"></span>
+            </option>
+          </select>
+        </div>
+        <div class="col-md-12">
+          <label for="linkCapa" class="form-label">URL/Link da Capa</label>
+          <input
+            th:field="*{linkCapa}"
+            th:errorclass="is-invalid"
+            type="url"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{linkCapa}"></div>
+        </div>
+        <div class="col-4">
+          <label for="comprimento" class="form-label">Comprimento</label>
+          <input
+            th:field="*{comprimento}"
+            th:errorclass="is-invalid"
+            type="number"
+            step="0.01"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{comprimento}"></div>
+        </div>
+        <div class="col-4">
+          <label for="largura" class="form-label">Largura</label>
+          <input
+            th:field="*{largura}"
+            th:errorclass="is-invalid"
+            type="number"
+            step="0.01"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{largura}"></div>
+        </div>
+        <div class="col-4">
+          <label for="altura" class="form-label">Altura</label>
+          <input
+            th:field="*{altura}"
+            th:errorclass="is-invalid"
+            type="number"
+            step="0.01"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{altura}"></div>
+        </div>
+        <div class="col-md-4">
+          <label for="estoque" class="form-label">Estoque</label>
+          <input
+            th:field="*{estoque}"
+            th:errorclass="is-invalid"
+            type="number"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{estoque}"></div>
+        </div>
+        <div class="col-md-4">
+          <label for="preco" class="form-label">Preço</label>
+          <input
+            th:field="*{preco}"
+            th:errorclass="is-invalid"
+            type="number"
+            step="0.01"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{preco}"></div>
+        </div>
+        <div class="col-md-4">
+          <label for="dataPublicacao" class="form-label"
+            >Data de Publicação</label
+          >
+          <input
+            th:field="*{dataPublicacao}"
+            th:errorclass="is-invalid"
+            type="text"
+            class="form-control"
+          />
+          <div class="invalid-feedback" th:errors="*{dataPublicacao}"></div>
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input
+              th:field="*{capaDura}"
+              class="form-check-input"
+              type="checkbox"
+            />
+            <label class="form-check-label" for="capaDura"> Capa dura </label>
+          </div>
+        </div>
+        <div class="col-6 d-grid gap-2 mx-auto mb-3">
+          <button class="btn btn-outline-success mb-1" type="submit">
+            Salvar
+          </button>
+        </div>
+      </form>
+    </main>
 
-    <main></main>
-
-    <footer></footer>
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head th:replace="~{baseAdmin :: titulo('Autores')}"></head>
+
+  <body>
+    <header th:replace="~{baseAdmin :: header}"></header>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ms-3 me-3"
+      >
+        <h2>Autores</h2>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <a class="btn btn-sm btn-outline-secondary" href="cadastroAutor">
+              Cadastrar autor
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ms-3 me-3">
+        <div class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th scope="col">#id</th>
+                <th scope="col">Foto</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Resumo</th>
+                <th scope="col">Opções</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="autor : ${autores}">
+                <th style="width: 50px" scope="row">
+                  <span th:text="${autor.id}"></span>
+                </th>
+                <td>
+                  <img th:src="${autor.foto}" width="110" height="140" />
+                </td>
+                <td style="width: 150px">
+                  <span th:text="${autor.nome}"></span>
+                </td>
+                <td><span th:text="${autor.resumo}"></span></td>
+                <td>
+                  <button
+                    class="btn btn-outline-warning mb-2 pe-3"
+                    type="submit"
+                  >
+                    Editar
+                  </button>
+                  <button class="btn btn-outline-danger mb-1" type="submit">
+                    Excluir
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

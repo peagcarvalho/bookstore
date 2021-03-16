@@ -9,6 +9,7 @@ import br.edu.ifpb.bookstore.modelo.Categoria;
 public interface CategoriaService {
     
     public List<Categoria> listarCategorias();
+    public List<Categoria> listarCategoriasOrdemAlfabetica();
     public void salvarCategoria(Categoria categoria);
 
 }

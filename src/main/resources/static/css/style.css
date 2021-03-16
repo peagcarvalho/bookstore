@@ -52,6 +52,19 @@ main {
   border: 1px solid #8d6c9f;
 }
 
+.btn-purple {
+  color: #8d6c9f;
+  font-weight: bold;
+  border: 2px solid #8d6c9f;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.btn-purple:hover {
+  background-color: #8d6c9f;
+  color: white;
+}
+
 .user-panel {
   color: white;
   /*border: 2px solid white;*/

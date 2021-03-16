@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -25,6 +24,7 @@ public class Livro {
 	private Date dataPublicacao;
 	@Column(nullable = false)
 	private String titulo;
+	@Column(length = 510)
 	private String sinopse;
 	@Column(nullable = false)
 	private String isbn10;
@@ -41,9 +41,9 @@ public class Livro {
 	private int estoque;
 	private float preco;
 
-	@ManyToMany
-	@JoinTable(name = "livro_autor", joinColumns = @JoinColumn(name = "livro_id"), inverseJoinColumns = @JoinColumn(name = "autor_id"))
-	private List<Autor> autores;
+	@ManyToOne
+	@JoinColumn(name = "autor_id")
+	private Autor autor;
 
 	@ManyToOne
 	@JoinColumn(name = "editora_id")
@@ -69,7 +69,7 @@ public class Livro {
 		return sinopse;
 	}
 	
-	public void setSinope(String sinopse) {
+	public void setSinopse(String sinopse) {
 		this.sinopse = sinopse;
 	}
 	
@@ -104,11 +104,7 @@ public class Livro {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public void setSinopse(String sinopse) {
-		this.sinopse = sinopse;
-	}
-
+	
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -165,12 +161,12 @@ public class Livro {
 		this.preco = preco;
 	}
 
-	public List<Autor> getAutores() {
-		return autores;
+	public Autor getAutor() {
+		return autor;
 	}
 
-	public void setAutores(List<Autor> autores) {
-		this.autores = autores;
+	public void setAutor(Autor autor) {
+		this.autor = autor;
 	}
 
 	public Editora getEditora() {

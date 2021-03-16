@@ -1,107 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Categorias</title>
-
-    <link rel="stylesheet" href="css/dashboard.css" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-  </head>
+  <head th:replace="~{baseAdmin :: titulo('Categorias')}"></head>
 
   <body>
-    <header id="navbar">
-      <div
-        class="navbar navbar-dark sticky-top bg-dark bg-light-purple flex-md-nowrap p-0 shadow"
-      >
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
-          <img
-            src="images/livreto_logo.png"
-            alt="Livreto"
-            width="136"
-            height="36"
-            class="d-inline-block align-top"
-        /></a>
-        <button
-          class="navbar-toggler position-absolute d-md-none collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#sidebarMenu"
-          aria-controls="sidebarMenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <input
-          class="form-control form-control-dark w-100"
-          type="text"
-          placeholder="Buscar"
-          aria-label="Search"
-        />
-        <ul class="navbar-nav px-3">
-          <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sair</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="container-fluid">
-        <div class="row">
-          <nav
-            id="sidebarMenu"
-            class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
-          >
-            <div class="position-sticky pt-3">
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">
-                    <span data-feather="home"></span>
-                    Dashboard
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="dashboard">
-                    <span data-feather="file"></span>
-                    Livros
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="shopping-cart"></span>
-                    Autores
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="users"></span>
-                    Editoras
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="categorias">
-                    <span data-feather="bar-chart-2"></span>
-                    Categorias
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="layers"></span>
-                    Vendas
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="layers"></span>
-                    Funcionários
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </header>
+    <header th:replace="~{baseAdmin :: header}"></header>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div
@@ -112,11 +14,16 @@
 
       <div class="ms-3 me-3">
         <h5>Adicionar nova categoria</h5>
-        <form class="mb-3" action="/categorias" method="POST">
+        <form
+          th:object="${requisicaoNovaCategoria}"
+          class="mb-3"
+          action="/categorias"
+          method="POST"
+        >
           <input
-            id="NomeCategoriaInput"
-            name="nome"
+            th:field="*{nome}"
             class="form-control me-2 d-inline-block mt-2"
+            th:errorclass="is-invalid"
             style="width: 300px"
             type="text"
             placeholder="Nome da categoria"
@@ -124,6 +31,7 @@
           <button class="btn btn-outline-success mb-1" type="submit">
             Salvar
           </button>
+          <div class="invalid-feedback" th:errors="*{nome}"></div>
         </form>
 
         <div class="table-responsive" style="width: 400px">
@@ -152,6 +60,5 @@
     </main>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/jquery.min.js"></script>
   </body>
 </html>

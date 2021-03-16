@@ -1,12 +1,9 @@
 package br.edu.ifpb.bookstore.servico;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.edu.ifpb.bookstore.modelo.Editora;
 import br.edu.ifpb.bookstore.repositorio.EditoraRepository;
 
@@ -23,8 +20,14 @@ public class EditoraServiceImpl implements EditoraService {
         return response;
     }
 
-    public void salvarEditora() {
-        
+    public List<Editora> listarEditorasOrdemAlfabetica() {
+        List<Editora> response = (List<Editora>) repository.findAllByOrderByNomeAsc();
+
+        return response;
+    }
+
+    public void salvarEditora(Editora editora) {
+        repository.save(editora);
     }
     
 }

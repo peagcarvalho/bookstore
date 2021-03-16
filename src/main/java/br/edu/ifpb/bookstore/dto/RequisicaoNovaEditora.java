@@ -1,9 +1,9 @@
 package br.edu.ifpb.bookstore.dto;
 
 import javax.validation.constraints.NotBlank;
-import br.edu.ifpb.bookstore.modelo.Categoria;
+import br.edu.ifpb.bookstore.modelo.Editora;
 
-public class RequisicaoNovaCategoria {
+public class RequisicaoNovaEditora {
 
     @NotBlank
     private String nome;
@@ -16,11 +16,11 @@ public class RequisicaoNovaCategoria {
         this.nome = nome;
     }
 
-    public Categoria toCategoria() {
-        Categoria categoria = new Categoria();
-        categoria.setNome(nome);
+    public Editora toEditora() {
+        Editora editora = new Editora();
+        editora.setNome(nome);
 
-        return categoria;
+        return editora;
     }
     
 }
