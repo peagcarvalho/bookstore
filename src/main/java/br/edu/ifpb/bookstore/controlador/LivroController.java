@@ -48,8 +48,11 @@ public class LivroController {
         return "cadastroLivro";
     }
 
-    @GetMapping("/buscaLivro?categoriaId/{categoriaId}")
-    public String buscaPelaCategoria(@PathVariable(value = "categoriaId") int categoriaId) {
+    // @GetMapping("index/buscaLivro?categoriaId={categoriaId}")
+    @GetMapping("/buscaLivro")
+    public String buscarPelaCategoria(/*@PathVariable(value = "categoriaId")*/ Integer categoriaId, Model model) {
+        model.addAttribute("categorias", categoriaService.listarCategoriasOrdemAlfabetica());
+        model.addAttribute("livrosBuscados", livroService   .buscarPelaCategoria(categoriaId));
         System.out.println("Id: " + categoriaId);
 
         return "buscaLivro";
@@ -68,9 +71,9 @@ public class LivroController {
         Livro livro = requisicao.toLivro();
         livroService.salvarLivro(livro);
 
-        model.addAttribute("livros", livroService.listarLivros());
+        // model.addAttribute("livros", livroService.listarLivros());
 
-        return "livros";
+        return "redirect:/livros";
     }
     
 }

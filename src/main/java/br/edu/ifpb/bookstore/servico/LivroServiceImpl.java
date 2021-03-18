@@ -24,5 +24,20 @@ public class LivroServiceImpl implements LivroService {
     public void salvarLivro(Livro livro) {
         repository.save(livro);
     }
+
+    @Transactional
+    public List<Livro> buscarPelaCategoria(Integer categoriaId) {
+        List<Livro> livrosBuscados = (List<Livro>) repository.findAll();
+
+        for(int contador = 0; contador < livrosBuscados.size(); contador++) {
+            Livro livro = livrosBuscados.get(contador);
+
+            if (livro.getCategoria().getId() != categoriaId) {
+                livrosBuscados.remove(contador);
+            }
+        }
+
+        return livrosBuscados;
+    }
     
 }
