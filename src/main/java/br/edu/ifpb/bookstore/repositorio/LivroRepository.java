@@ -15,5 +15,6 @@ public interface LivroRepository extends PagingAndSortingRepository<Livro, Integ
 	List<Livro> findByCategoriaAndIdioma(String categoria, String idioma);
 	List<Livro> findByAutor(Integer autorId);
 	List<Livro> findByCategoria(Integer categoriaId);
+	List<Livro> findTop8By();
 
 }

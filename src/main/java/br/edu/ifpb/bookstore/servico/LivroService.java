@@ -10,5 +10,6 @@ public interface LivroService {
     public List<Livro> listarLivros();
     public void salvarLivro(Livro livro);
     public List<Livro> buscarPelaCategoria(Integer categoriaId);
+    public List<Livro> buscarNumeroDeLivros(int numeroDeLivros);
     
 }

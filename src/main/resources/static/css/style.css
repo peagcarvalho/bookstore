@@ -24,6 +24,10 @@ main {
   background-color: #8d6c9f;
 }
 
+.color-purple {
+  color: #57446e;
+}
+
 .bg-silver {
   background-color: #e7e6df;
 }
@@ -90,4 +94,9 @@ main {
   color: #57446e;
   font-weight: bold;
   align-items: center;
+}
+
+.fit-img {
+  width: 100%;
+  object-fit: contain;
 }

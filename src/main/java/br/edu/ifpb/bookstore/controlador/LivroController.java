@@ -52,8 +52,10 @@ public class LivroController {
     @GetMapping("/buscaLivro")
     public String buscarPelaCategoria(/*@PathVariable(value = "categoriaId")*/ Integer categoriaId, Model model) {
         model.addAttribute("categorias", categoriaService.listarCategoriasOrdemAlfabetica());
-        model.addAttribute("livrosBuscados", livroService   .buscarPelaCategoria(categoriaId));
-        System.out.println("Id: " + categoriaId);
+        model.addAttribute("livrosBuscados", livroService.buscarPelaCategoria(categoriaId));
+
+        Categoria categoria = categoriaService.buscarPeloId(categoriaId);
+        model.addAttribute("nomeBusca", categoria.getNome());
 
         return "buscaLivro";
     }

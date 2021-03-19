@@ -18,7 +18,7 @@ public class HomeController {
     @GetMapping("/index")
     public String home(Model model) {
         model.addAttribute("categorias", categoriaService.listarCategoriasOrdemAlfabetica());
-        model.addAttribute("livros", LivroService.listarLivros());
+        model.addAttribute("livros", LivroService.buscarNumeroDeLivros(8));
 
         return "index";
     }

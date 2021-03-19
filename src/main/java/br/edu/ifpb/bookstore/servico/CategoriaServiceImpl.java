@@ -31,5 +31,10 @@ public class CategoriaServiceImpl implements CategoriaService {
     public void salvarCategoria(Categoria categoria) {
         repository.save(categoria);
     }
+
+    @Transactional
+    public Categoria buscarPeloId(Integer categoriaId) {
+        return repository.findById(categoriaId).get();
+    }
     
 }
