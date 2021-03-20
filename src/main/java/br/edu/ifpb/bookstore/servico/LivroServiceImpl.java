@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import br.edu.ifpb.bookstore.modelo.Categoria;
 import br.edu.ifpb.bookstore.modelo.Livro;
 import br.edu.ifpb.bookstore.repositorio.LivroRepository;
 
@@ -28,22 +29,16 @@ public class LivroServiceImpl implements LivroService {
 
     @Transactional
     public List<Livro> buscarPelaCategoria(Integer categoriaId) {
-        List<Livro> livrosBuscados = (List<Livro>) repository.findAll();
-        List<Livro> result = new ArrayList<Livro>();
+        Categoria categoria = new Categoria();
+        categoria.setId(categoriaId);
 
-        for(int contador = 0; contador < livrosBuscados.size(); contador++) {
-            Livro livro = livrosBuscados.get(contador);
-
-            if (livro.getCategoria().getId() == categoriaId) {
-                result.add(livro);
-            }
-        }
+        List<Livro> result = (List<Livro>) repository.findByCategoria(categoria);
 
         return result;
     }
 
     @Transactional
-    public List<Livro> buscarNumeroDeLivros(int numeroDeLivros) { // quantidade de itens (livros) a serem retornados como resultado
+    public List<Livro> buscarLivrosAleatorios(int numeroDeLivros) { // quantidade de itens (livros) a serem retornados como resultado
         List<Livro> livros = (List<Livro>) repository.findAll();
         List<Livro> result = new ArrayList<Livro>();
 
@@ -53,8 +48,6 @@ public class LivroServiceImpl implements LivroService {
 
         for (int contador = 0; contador < numeroDeLivros; contador++) {
             int numeroAleatorio = (int) Math.floor(Math.random() * livros.size());
-
-            System.out.println(numeroAleatorio);
 
             result.add(livros.get(numeroAleatorio));
             livros.remove(numeroAleatorio);

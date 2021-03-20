@@ -11,15 +11,12 @@
       <div class="container-xl">
         <h5 class="mb-4 color-purple fw-bold">Sugestões para você</h5>
 
-        <div
-          class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-md-4 g-3"
-        >
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
           <div class="col" th:each="livro : ${livros}">
             <div class="card shadow-sm">
               <img
                 class="bd-placeholder-img card-img-top fit-img"
                 th:src="${livro.capa}"
-                width="50%"
                 height="225"
               />
 
