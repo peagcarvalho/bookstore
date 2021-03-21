@@ -57,5 +57,17 @@ public class LivroServiceImpl implements LivroService {
 
         return result;
     }
+
+    @Transactional
+    public List<Livro> buscarPeloTitulo(String textoBusca) {
+        List<Livro> livros = repository.findByTituloContaining(textoBusca);
+
+        return livros;
+    }
+
+    @Transactional
+    public Livro buscarPorId(Integer livroId) {
+        return repository.findById(livroId).get();
+    }
     
 }

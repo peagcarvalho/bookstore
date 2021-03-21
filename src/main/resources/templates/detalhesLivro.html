@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head th:replace="~{base :: titulo('Livreto')}"> </head>
+
+  <body>
+    <header th:replace="~{base :: header}"></header>
+
+    <main>
+      <div class="container-xl">
+        <div class="row g-3">
+          <div class="col-12 col-sm-6 col-lg-3" style="height: 350px">
+            <img class="fit-img" th:src="${livro.capa}" height="350" />
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-6">
+            <h4
+              class="color-purple fw-bold text-wrap text-break mb-2"
+              th:text="${livro.titulo}"
+            ></h4>
+
+            <h6 class="mb-4">
+              por
+              <span class="text-muted" th:text="${livro.autor.nome}"></span>
+              (Autor)
+            </h6>
+
+            <p class="fs-6" th:text="${livro.sinopse}"></p>
+          </div>
+
+          <div class="col-12 col-lg-3 p-3" style="border: 2px solid #57446e">
+            <h3
+              class="fs-4"
+              th:text="${'R$ ' + #numbers.formatDecimal(livro.preco, 2, 'POINT', 2, 'COMMA')}"
+            ></h3>
+
+            <p class="fs-6 mb-4">
+              Vendido e enviado por
+              <span class="color-purple">Livreto.com.br</span>
+            </p>
+
+            <button class="btn-purple fs-6 mb-1 w-100">
+              <img
+                class=""
+                src="images/shopping_bag.png"
+                width="32"
+                height="32"
+              />
+              Adicionar na Sacola
+            </button>
+
+            <button class="btn-purple fs-6 w-100">
+              <img
+                class=""
+                src="images/bookmark_icon.png"
+                width="32"
+                height="32"
+              />
+              Adicionar aos Favoritos
+            </button>
+          </div>
+
+          <div class="col-12 mb-5">
+            <h5 class="color-purple fw-bold mt-3 mb-3">Detalhes do Produto</h5>
+
+            <table class="table w-75 fs-6">
+              <tbody>
+                <tr>
+                  <th scope="row">ISBN 10</th>
+                  <td th:text="${livro.isbn10}"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">ISBN 13</th>
+                  <td th:text="${livro.isbn13}"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Data de Publicação</th>
+                  <td th:text="${livro.dataPublicacao}"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Páginas</th>
+                  <td th:text="${livro.paginas}"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Gênero</th>
+                  <td th:text="${livro.categoria.nome}"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Idioma</th>
+                  <td th:text="${livro.idioma}"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Editora</th>
+                  <td th:text="${livro.editora.nome}"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Dimensões</th>
+                  <td>
+                    <span th:text="${livro.dimensoes.comprimento}"></span> x
+                    <span th:text="${livro.dimensoes.largura}"></span> x
+                    <span th:text="${livro.dimensoes.altura}"></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

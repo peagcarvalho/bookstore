@@ -22,7 +22,11 @@
 
               <div class="card-body">
                 <h5 class="card-title fs-6">
-                  <a href="#" th:text="${livro.titulo}"></a>
+                  <a
+                    href="detalhesLivro"
+                    th:href="${(#mvc.url('LC#detalhesDoLivro').arg(0, livro.id)).build()}"
+                    th:text="${livro.titulo}"
+                  ></a>
                 </h5>
                 <h7 class="card-subtitle mb-2 text-muted fs-6"
                   ><span th:text="${livro.autor.nome}"></span

@@ -11,5 +11,7 @@ public interface LivroService {
     public void salvarLivro(Livro livro);
     public List<Livro> buscarPelaCategoria(Integer categoriaId);
     public List<Livro> buscarLivrosAleatorios(int numeroDeLivros);
+    public List<Livro> buscarPeloTitulo(String textoBusca);
+    public Livro buscarPorId(Integer livroId);
     
 }

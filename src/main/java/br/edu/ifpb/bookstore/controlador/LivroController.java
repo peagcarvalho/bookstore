@@ -9,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import br.edu.ifpb.bookstore.dto.RequisicaoNovoLivro;
 import br.edu.ifpb.bookstore.modelo.Autor;
 import br.edu.ifpb.bookstore.modelo.Categoria;
@@ -48,9 +50,8 @@ public class LivroController {
         return "cadastroLivro";
     }
 
-    // @GetMapping("index/buscaLivro?categoriaId={categoriaId}")
-    @GetMapping("/buscaLivro")
-    public String buscarPelaCategoria(/*@PathVariable(value = "categoriaId")*/ Integer categoriaId, Model model) {
+    @GetMapping("/buscaLivro?categoriaId={categoriaId}")
+    public String buscarPelaCategoria(@PathVariable(value = "categoriaId") Integer categoriaId, Model model) {
         model.addAttribute("categorias", categoriaService.listarCategoriasOrdemAlfabetica());
         model.addAttribute("livrosBuscados", livroService.buscarPelaCategoria(categoriaId));
 
@@ -58,6 +59,24 @@ public class LivroController {
         model.addAttribute("nomeBusca", categoria.getNome());
 
         return "buscaLivro";
+    }
+
+   @PostMapping("/buscaLivro")
+    public String buscarPorTexto(@RequestParam("textoBusca") String textoBusca, Model model) {
+        model.addAttribute("categorias", categoriaService.listarCategoriasOrdemAlfabetica());
+        model.addAttribute("livrosBuscados", livroService.buscarPeloTitulo(textoBusca));
+
+        model.addAttribute("nomeBusca", textoBusca);
+
+        return textoBusca;
+    }
+
+    @GetMapping("/detalhesLivro")
+    public String detalhesDoLivro(Integer livroId, Model model) {
+        model.addAttribute("categorias", categoriaService.listarCategoriasOrdemAlfabetica());
+        model.addAttribute("livro", livroService.buscarPorId(livroId));
+
+        return "detalhesLivro";
     }
 
     @PostMapping("cadastroLivro")

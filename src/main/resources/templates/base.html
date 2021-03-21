@@ -1,7 +1,6 @@
 <head th:fragment="titulo(valor)">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title th:text="${valor}"></title>
 
   <link rel="stylesheet" th:href="@{/css/style.css}" />
@@ -65,7 +64,11 @@
             placeholder="O que você procura?"
           />
 
-          <button type="submit" class="d-inline-block bt-search">
+          <button
+            id="searchButton"
+            type="submit"
+            class="d-inline-block bt-search"
+          >
             <img
               src="images/search_icon.png"
               alt="Buscar"
@@ -105,8 +108,6 @@
     </div>
   </nav>
 
-  <!-- style="margin-top: 70px" -->
-
   <!-- Segunda barra de navegação -->
   <nav class="navbar navbar-expand navbar-dark bg-silver mb-4 pb-0 pt-1">
     <div class="container-xl">
@@ -136,7 +137,6 @@
                 th:href="${(#mvc.url('LC#buscarPelaCategoria').arg(0, categoria.id)).build()}"
                 ><span th:text="${categoria.nome}"></span
               ></a>
-              <!-- th:href="@{/buscaLivro(categoriaId=${categoria.id})}" -->
             </li>
           </ul>
         </li>
