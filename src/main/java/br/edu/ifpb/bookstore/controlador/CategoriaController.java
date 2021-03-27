@@ -42,6 +42,6 @@ public class CategoriaController {
 
         model.addAttribute("categorias", categoriaService.listarCategorias());
 
-        return "categorias";
+        return "redirect:/categorias";
     }
 }

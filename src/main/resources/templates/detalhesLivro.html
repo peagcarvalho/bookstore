@@ -76,7 +76,11 @@
 
                 <tr>
                   <th scope="row">Data de Publicação</th>
-                  <td th:text="${livro.dataPublicacao}"></td>
+                  <td>
+                    <span
+                      th:text="${#temporals.format(livro.dataPublicacao, 'dd/MM/yyyy')}"
+                    ></span>
+                  </td>
                 </tr>
 
                 <tr>

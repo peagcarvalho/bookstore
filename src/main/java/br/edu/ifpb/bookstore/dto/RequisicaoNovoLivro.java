@@ -1,12 +1,13 @@
 package br.edu.ifpb.bookstore.dto;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.Length;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import br.edu.ifpb.bookstore.modelo.Autor;
 import br.edu.ifpb.bookstore.modelo.Categoria;
 import br.edu.ifpb.bookstore.modelo.Dimensoes;
@@ -19,11 +20,12 @@ public class RequisicaoNovoLivro {
     private String titulo;
     @NotBlank
     private String sinopse;
-    @NotBlank
+    @Pattern(regexp = "[0-9]{2}/?[0-9]{2}/?[0-9]{4}", message = "A data não está no formato correto")
+    @NotBlank @Size(min = 10, max = 10, message = "tamanho deve ser 10 caracteres")
     private String dataPublicacao;
-    @NotBlank @Length(min = 10, max = 10)
+    @NotBlank @Length(min = 10, max = 10, message = "tamanho deve ser 10")
     private String isbn10;
-    @NotBlank @Length(min = 13, max = 13)
+    @NotBlank @Length(min = 13, max = 13, message = "tamanho deve ser 13")
     private String isbn13;
     @NotNull @Min(0)
     private int paginas;
@@ -63,12 +65,13 @@ public class RequisicaoNovoLivro {
         livro.setEstoque(estoque);
         livro.setPreco(preco);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            livro.setDataPublicacao(sdf.parse(dataPublicacao));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        String[] dataSplit = this.dataPublicacao.split("/");
+        int dia = Integer.parseInt(dataSplit[0]);
+        int mes = Integer.parseInt(dataSplit[1]);
+        int ano = Integer.parseInt(dataSplit[2]);
+
+        LocalDate dataPublicacao = LocalDate.of(ano, mes, dia);
+        livro.setDataPublicacao(dataPublicacao);
         
         Categoria categoria = new Categoria();
         categoria.setId(categoriaId);

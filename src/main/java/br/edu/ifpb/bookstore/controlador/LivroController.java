@@ -61,14 +61,14 @@ public class LivroController {
         return "buscaLivro";
     }
 
-   @PostMapping("/buscaLivro")
-    public String buscarPorTexto(@RequestParam("textoBusca") String textoBusca, Model model) {
+   @GetMapping("/buscaLivro/{textoBusca}")
+    public String buscarPeloTitulo(@PathVariable(value = "textoBusca") String textoBusca, Model model) {
         model.addAttribute("categorias", categoriaService.listarCategoriasOrdemAlfabetica());
         model.addAttribute("livrosBuscados", livroService.buscarPeloTitulo(textoBusca));
 
         model.addAttribute("nomeBusca", textoBusca);
 
-        return textoBusca;
+        return "buscaLivro";
     }
 
     @GetMapping("/detalhesLivro")

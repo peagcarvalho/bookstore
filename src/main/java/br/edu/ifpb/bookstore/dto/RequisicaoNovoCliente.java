@@ -1,7 +1,6 @@
 package br.edu.ifpb.bookstore.dto;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -18,12 +17,13 @@ public class RequisicaoNovoCliente {
     private String email;
     @NotBlank @Size(min = 6, max = 20)
     private String senha;
-    @NotBlank
+    @NotBlank @Size(min = 10, max = 10, message = "tamanho deve ser 14 caracteres")
     @Pattern(regexp = "[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}", message = "O CPF não está no formato correto")
     private String cpfCliente;
     @NotBlank
     private String telefone;
-    @NotBlank @Size(min = 10, max = 10)
+    @Pattern(regexp = "[0-9]{2}/?[0-9]{2}/?[0-9]{4}", message = "A data não está no formato correto")
+    @NotBlank @Size(min = 10, max = 10, message = "tamanho deve ser 10 caracteres")
     private String dataNascimento;
 
     public Cliente toCliente() {
@@ -35,13 +35,13 @@ public class RequisicaoNovoCliente {
         cliente.setCpf(cpfCliente);
         cliente.setTelefone(telefone);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String[] dataSplit = this.dataNascimento.split("/");
+        int dia = Integer.parseInt(dataSplit[0]);
+        int mes = Integer.parseInt(dataSplit[1]);
+        int ano = Integer.parseInt(dataSplit[2]);
 
-        try {
-            cliente.setDataNasc(sdf.parse(dataNascimento));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
+        cliente.setDataNasc(dataNascimento);
 
         return cliente;
     }

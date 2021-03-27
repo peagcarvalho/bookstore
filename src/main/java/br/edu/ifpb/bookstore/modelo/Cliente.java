@@ -1,6 +1,6 @@
 package br.edu.ifpb.bookstore.modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,9 +15,8 @@ public class Cliente extends Usuario {
 	
 	@Id @Column(length = 14)
 	private String cpf;
-	@Temporal(TemporalType.DATE)
 	@Column(name = "data_nasc")
-	private Date dataNasc;
+	private LocalDate dataNasc;
 	private String telefone;
 
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
@@ -31,11 +30,11 @@ public class Cliente extends Usuario {
 		this.cpf = cpf;
 	}
 	
-	public Date getDataNasc() {
+	public LocalDate getDataNasc() {
 		return dataNasc;
 	}
 	
-	public void setDataNasc(Date dataNasc) {
+	public void setDataNasc(LocalDate dataNasc) {
 		this.dataNasc = dataNasc;
 	}
 	

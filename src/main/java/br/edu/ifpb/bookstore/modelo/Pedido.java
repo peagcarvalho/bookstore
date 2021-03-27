@@ -1,6 +1,6 @@
 package br.edu.ifpb.bookstore.modelo;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,23 +13,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Pedido {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data_compra")
-    private Date dataCompra;
-    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime dataCompra;
+
     @Column(name = "data_prevista_entrega")
-    private Date dataPrevistaEntrega;
-    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime dataPrevistaEntrega;
+    
     @Column(name = "data_entrega")
-    private Date dataEntrega;
+    private LocalDateTime dataEntrega;
+
     private Endereco endereco;
     private String destinatario;
     @Enumerated(EnumType.STRING)
@@ -76,11 +74,11 @@ public class Pedido {
         this.id = id;
     }
 
-    public Date getDataCompra() {
+    public LocalDateTime getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(Date dataCompra) {
+    public void setDataCompra(LocalDateTime dataCompra) {
         this.dataCompra = dataCompra;
     }
 
@@ -140,19 +138,19 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-    public Date getDataPrevistaEntrega() {
+    public LocalDateTime getDataPrevistaEntrega() {
         return dataPrevistaEntrega;
     }
 
-    public void setDataPrevistaEntrega(Date dataPrevistaEntrega) {
+    public void setDataPrevistaEntrega(LocalDateTime dataPrevistaEntrega) {
         this.dataPrevistaEntrega = dataPrevistaEntrega;
     }
 
-    public Date getDataEntrega() {
+    public LocalDateTime getDataEntrega() {
         return dataEntrega;
     }
 
-    public void setDataEntrega(Date dataEntrega) {
+    public void setDataEntrega(LocalDateTime dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
     

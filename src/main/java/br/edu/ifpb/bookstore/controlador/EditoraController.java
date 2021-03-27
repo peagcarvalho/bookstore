@@ -42,7 +42,7 @@ public class EditoraController {
 
         model.addAttribute("editoras", editoraService.listarEditoras());
 
-        return "editoras";
+        return "redirect:/editoras";
     }
     
 }

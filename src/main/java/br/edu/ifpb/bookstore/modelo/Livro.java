@@ -1,6 +1,6 @@
 package br.edu.ifpb.bookstore.modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -17,8 +17,8 @@ public class Livro {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Temporal(TemporalType.DATE) @Column(name = "data_publi")
-	private Date dataPublicacao;
+	@Column(name = "data_publi")
+	private LocalDate dataPublicacao;
 	@Column(nullable = false)
 	private String titulo;
 	@Column(length = 510)
@@ -46,11 +46,11 @@ public class Livro {
 	@JoinColumn(name = "editora_id")
 	private Editora editora;
 	
-	public Date getDataPublicacao() {
+	public LocalDate getDataPublicacao() {
 		return dataPublicacao;
 	}
 	
-	public void setDataPublicacao(Date dataPublicacao) {
+	public void setDataPublicacao(LocalDate dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
 	}
 	

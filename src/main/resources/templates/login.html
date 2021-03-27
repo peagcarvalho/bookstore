@@ -5,11 +5,11 @@
   <body>
     <header th:insert="~{base :: navbarForms}"></header>
 
-    <div class="container-xl mx-auto">
-      <div class="text-center mb-5">
+    <main class="container-xl mx-auto">
+      <div class="text-center mt-5 mb-3">
         <img
           class="mb-2"
-          src="images/livreto_book.png"
+          th:src="@{/images/livreto_book.png}"
           width="75"
           height="42"
         />
@@ -18,36 +18,29 @@
         <medium>E comece a comprar com os melhores preços</medium>
       </div>
 
-      <form
-        class="row g-3 w-50 mx-auto"
-        th:object="${requisicaoNovoCliente}"
-        action="/criarConta"
-        method="POST"
-      >
-        <div class="col-md-12">
-          <label for="email" class="form-label">Email</label>
-          <input
-            th:field="*{email}"
-            th:errorclass="is-invalid"
-            type="email"
-            class="form-control"
-          />
-          <div class="invalid-feedback" th:errors="*{email}"></div>
-        </div>
-        <div class="col-md-12 mb-3">
-          <label for="senha" class="form-label">Senha</label>
-          <input
-            th:field="*{senha}"
-            th:errorclass="is-invalid"
-            type="password"
-            class="form-control"
-          />
-          <div class="invalid-feedback" th:errors="*{senha}"></div>
-        </div>
-        <div class="col-12 d-grid gap-2 mx-auto mb-3">
-          <button type="submit" class="btn-purple mb-1">Entrar na conta</button>
-        </div>
-      </form>
-    </div>
+      <div class="form-signin">
+        <form class="row g-3 mx-auto" th:action="@{/login}" method="POST">
+          <div class="col-12">
+            <label for="username" class="form-label">Email</label>
+            <input type="email" name="username" class="form-control" />
+            <div class="invalid-feedback"></div>
+          </div>
+
+          <div class="col-12 mb-2">
+            <label for="password" class="form-label">Senha</label>
+            <input type="password" name="password" class="form-control" />
+            <div class="invalid-feedback"></div>
+          </div>
+
+          <div class="col-12 d-grid">
+            <button type="submit" class="btn-purple mb-1">
+              Entrar na conta
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
   </body>
 </html>

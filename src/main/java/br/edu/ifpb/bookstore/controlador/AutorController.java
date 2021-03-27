@@ -42,7 +42,7 @@ public class AutorController {
 
         model.addAttribute("autores", autorService.listarAutores());
 
-        return "autores";
+        return "redirect:/autores";
     }
     
 }
