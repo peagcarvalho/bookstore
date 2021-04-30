@@ -29,15 +29,14 @@ public class ClienteController {
             return "criarConta";                
         }
 
+        System.out.println("Nome do cliente: " + requisicao.getNome());
+        System.out.println("Sobrenome do cliente: " + requisicao.getSobrenome());
+
         Cliente cliente = requisicao.toCliente();
+
         clienteService.salvarCliente(cliente);
 
-        return "redirect:/index";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
+        return "redirect:/login";
     }
     
 }

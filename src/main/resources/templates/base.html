@@ -112,7 +112,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                olá, <span>Usuário!</span>
+                olá, <span sec:authentication="principal.nome">Usuário!</span>
               </a>
 
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -177,7 +177,7 @@
       <a class="navbar-brand" href="#">
         <img
           src="/images/bookmark_icon.png"
-          alt="Livros Salvos"
+          alt="Favoritos"
           width="40"
           height="40"
           class="d-inline-block align-top"

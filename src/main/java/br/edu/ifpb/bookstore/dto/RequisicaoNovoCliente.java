@@ -17,7 +17,7 @@ public class RequisicaoNovoCliente {
     private String email;
     @NotBlank @Size(min = 6, max = 20)
     private String senha;
-    @NotBlank @Size(min = 10, max = 10, message = "tamanho deve ser 14 caracteres")
+    @NotBlank @Size(min = 14, max = 14, message = "tamanho deve ser 14 caracteres")
     @Pattern(regexp = "[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}", message = "O CPF não está no formato correto")
     private String cpfCliente;
     @NotBlank

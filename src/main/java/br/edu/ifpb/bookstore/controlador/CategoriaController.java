@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import br.edu.ifpb.bookstore.dto.RequisicaoNovaCategoria;
@@ -29,7 +30,7 @@ public class CategoriaController {
     }
     
     @PostMapping
-    public String salvarCategoria(@Valid RequisicaoNovaCategoria requisicao, BindingResult result, Model model) {
+    public String cadastrar(@Valid RequisicaoNovaCategoria requisicao, BindingResult result, Model model) {
         if (result.hasErrors()) {
             List<Categoria> categorias = categoriaService.listarCategorias();
             model.addAttribute("categorias", categorias);
@@ -41,6 +42,13 @@ public class CategoriaController {
         categoriaService.salvarCategoria(categoria);
 
         model.addAttribute("categorias", categoriaService.listarCategorias());
+
+        return "redirect:/categorias";
+    }
+
+    @GetMapping("/excluir/{categoriaId}")
+    public String excluir(@PathVariable(value = "categoriaId") Integer categoriaId) {
+        categoriaService.excluirPeloId(categoriaId);
 
         return "redirect:/categorias";
     }

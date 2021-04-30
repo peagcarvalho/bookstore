@@ -10,5 +10,6 @@ public interface EditoraService {
     public List<Editora> listarEditoras();
     public List<Editora> listarEditorasOrdemAlfabetica();
     public void salvarEditora(Editora editora);
+    public void excluirEditora(Integer editoraId);
     
 }

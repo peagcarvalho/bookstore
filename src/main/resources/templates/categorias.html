@@ -17,7 +17,7 @@
         <form
           th:object="${requisicaoNovaCategoria}"
           class="mb-3"
-          action="/categorias"
+          th:action="@{/categorias}"
           method="POST"
         >
           <input
@@ -48,9 +48,12 @@
                 <td><span th:text="${categoria.id}"></span></td>
                 <td><span th:text="${categoria.nome}"></span></td>
                 <td>
-                  <button class="btn btn-outline-danger mb-1" type="submit">
+                  <a
+                    class="btn btn-outline-danger mb-1"
+                    th:href="@{categorias/excluir/{categoriaId}(categoriaId=${categoria.id})}"
+                  >
                     Excluir
-                  </button>
+                  </a>
                 </td>
               </tr>
             </tbody>

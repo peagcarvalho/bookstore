@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.edu.ifpb.bookstore.dto.RequisicaoNovaEditora;
@@ -41,6 +42,13 @@ public class EditoraController {
         editoraService.salvarEditora(editora);
 
         model.addAttribute("editoras", editoraService.listarEditoras());
+
+        return "redirect:/editoras";
+    }
+
+    @GetMapping("/editoras/excluir/{editoraId}")
+    public String excluir(@PathVariable(value = "editoraId") Integer editoraId) {
+        editoraService.excluirEditora(editoraId);
 
         return "redirect:/editoras";
     }

@@ -3,17 +3,18 @@ package br.edu.ifpb.bookstore.modelo;
 import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
+@DiscriminatorValue("Cliente")
 public class Cliente extends Usuario {
 	
-	@Id @Column(length = 14)
+	private static final long serialVersionUID = 1L;
+	
+	@Column(length = 14)
 	private String cpf;
 	@Column(name = "data_nasc")
 	private LocalDate dataNasc;

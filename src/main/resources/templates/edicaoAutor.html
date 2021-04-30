@@ -10,18 +10,22 @@
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ms-3 me-3"
       >
         <div class="ms-3 me-3">
-          <h5>Cadastrar novo autor</h5>
+          <h5>Editar autor: <span th:text="${autor.nome}"></span></h5>
         </div>
       </div>
       <form
         class="row g-3 ms-3 me-3"
         th:object="${requisicaoAutor}"
-        action="/cadastroAutor"
+        action="/edicaoAutor"
         method="POST"
       >
+        <div class="col-4">
+          <img th:src="${autor.foto}" width="225" height="335" />
+        </div>
         <div class="col-md-12">
           <label for="nome" class="form-label">Nome</label>
           <input
+            value="akjsabksa"
             th:field="*{nome}"
             th:errorclass="is-invalid"
             type="text"
@@ -33,6 +37,7 @@
           <label for="resumo" class="form-label">Resumo</label>
           <textarea
             th:field="*{resumo}"
+            th:value="${autor.resumo}"
             th:errorclass="is-invalid"
             class="form-control"
             style="height: 150px"
@@ -43,6 +48,7 @@
           <label for="linkFoto" class="form-label">URL/Link da Foto</label>
           <input
             th:field="*{linkFoto}"
+            th:value="${autor.foto}"
             th:errorclass="is-invalid"
             type="url"
             class="form-control"
@@ -51,7 +57,7 @@
         </div>
         <div class="col-6 d-grid gap-2 mx-auto mb-3">
           <button class="btn btn-outline-success mb-1" type="submit">
-            Salvar
+            Salvar alterações
           </button>
         </div>
       </form>

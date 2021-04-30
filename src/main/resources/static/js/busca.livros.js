@@ -12,6 +12,8 @@ document
     if (event.key === "Enter") {
       const busca = document.getElementById("searchInput").value;
 
+      console.log("Você buscou por: " + busca);
+
       document.getElementById("searchButton").href = "/buscaLivro/" + busca;
 
       document.getElementById("searchButton").click();

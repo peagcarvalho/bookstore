@@ -39,4 +39,19 @@ public class AutorServiceImpl implements AutorService {
         repository.save(autor);
     }
 
+    @Transactional
+    public void excluirPeloId(Integer autorId) {
+        repository.deleteById(autorId);
+    }
+
+    @Transactional
+    public Autor buscarPeloId(Integer autorId) {
+        return repository.findById(autorId).get();
+    }
+
+    @Transactional
+    public void atualizar(Autor autor) {
+        repository.save(autor);
+    }
+
 }

@@ -37,7 +37,7 @@ public class Pedido {
     @Column(name = "valor_total")
     private float valorTotal;
 
-    @OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "pedido", fetch = FetchType.LAZY)
     private List<ItemDeCompra> itensComprados;
 
     @ManyToOne

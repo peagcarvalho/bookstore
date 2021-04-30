@@ -36,5 +36,10 @@ public class CategoriaServiceImpl implements CategoriaService {
     public Categoria buscarPeloId(Integer categoriaId) {
         return repository.findById(categoriaId).get();
     }
+
+    @Transactional
+    public void excluirPeloId(Integer categoriaId) {
+        repository.deleteById(categoriaId);
+    }
     
 }

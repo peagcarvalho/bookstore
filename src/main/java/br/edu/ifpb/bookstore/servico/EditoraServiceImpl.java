@@ -29,5 +29,9 @@ public class EditoraServiceImpl implements EditoraService {
     public void salvarEditora(Editora editora) {
         repository.save(editora);
     }
+
+    public void excluirEditora(Integer editoraId) {
+        repository.deleteById(editoraId);
+    }
     
 }

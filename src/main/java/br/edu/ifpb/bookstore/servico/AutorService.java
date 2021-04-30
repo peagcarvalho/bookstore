@@ -11,5 +11,8 @@ public interface AutorService {
     public List<Autor> listarAutoresOrdemAlfabetica();
     public List<Autor> buscarAutoresPeloNome(String nome);
     public void salvarAutor(Autor autor);
+    public void excluirPeloId(Integer autorId);
+    public Autor buscarPeloId(Integer autorId);
+    public void atualizar(Autor autor);
     
 }

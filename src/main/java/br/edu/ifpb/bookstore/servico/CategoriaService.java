@@ -12,5 +12,6 @@ public interface CategoriaService {
     public List<Categoria> listarCategoriasOrdemAlfabetica();
     public void salvarCategoria(Categoria categoria);
     public Categoria buscarPeloId(Integer categoriaId);
+    public void excluirPeloId(Integer categoriaId);
 
 }

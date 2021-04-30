@@ -92,8 +92,6 @@ public class LivroController {
         Livro livro = requisicao.toLivro();
         livroService.salvarLivro(livro);
 
-        // model.addAttribute("livros", livroService.listarLivros());
-
         return "redirect:/livros";
     }
     

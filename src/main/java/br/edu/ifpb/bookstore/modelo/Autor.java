@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import br.edu.ifpb.bookstore.dto.RequisicaoAutor;
+
 @Entity
 public class Autor {
     

@@ -48,9 +48,12 @@
                 <td><span th:text="${editora.id}"></span></td>
                 <td><span th:text="${editora.nome}"></span></td>
                 <td>
-                  <button class="btn btn-outline-danger mb-1" type="submit">
+                  <a
+                    class="btn btn-outline-danger mb-1"
+                    th:href="@{editoras/excluir/{editoraId}(editoraId=${editora.id})}"
+                  >
                     Excluir
-                  </button>
+                  </a>
                 </td>
               </tr>
             </tbody>
